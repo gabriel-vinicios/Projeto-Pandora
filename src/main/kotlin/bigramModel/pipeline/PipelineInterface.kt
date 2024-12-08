@@ -1,7 +1,7 @@
 package bigramModel.pipeline
 
 
-interface pipelineInterface {
+interface PipelineInterface {
     fun loadAndProcessData(filePath: String)
     fun tokenize(text: String): List<String>
 }
