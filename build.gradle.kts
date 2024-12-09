@@ -40,7 +40,7 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlin-deeplearning-visualization:0.5.2")
     implementation ("org.jetbrains.kotlinx:kotlin-deeplearning-api:0.5.2")
     implementation ("org.jetbrains.kotlinx:kotlin-deeplearning-impl:0.5.2")
-    implementation("org.tensorflow:tensorflow-core-platform:0.4.0
+    implementation("org.tensorflow:tensorflow-core-platform:0.4.0)
     implementation("org.tensorflow:tensorflow-core-api:0.4.0")
     implementation("ai.djl:api:0.23.0")
     implementation("ai.djl.tensorflow:tensorflow-engine:0.23.0")
