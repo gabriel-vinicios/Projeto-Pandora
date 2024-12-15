@@ -3,31 +3,30 @@ import org.jetbrains.kotlinx.dataframe.*
 import org.jetbrains.kotlinx.dataframe.api.*
 import org.jetbrains.kotlinx.dataframe.io.*
 
+abstract class pipelineController : PipelineInterface {
+    fun loadAndProcessData(filePath: String) {
 
-class pipelineController : PipelineInterface {
-    override fun readData(): DataFrame {
-        val data = DataFrame.readCSV("src/main/resources/data.csv")
-        return data
     }
 
-    override fun preprocessData(data: DataFrame): DataFrame {
-        val preprocessedData = data
-        return preprocessedData
+    /**
+     * Tokenizes the given text into a list of string tokens.
+     *
+     * @param text the input string that needs to be tokenized.
+     * @return a list of non-empty, trimmed string tokens derived from the input text.
+     */
+    fun tokenize(text: String): List<String> {
+        return text.split(text).map { it.trim() }.filter { it.isNotEmpty() }
     }
 
-    override fun trainModel(data: DataFrame) {
-        TODO("Not yet implemented")
+    /**
+     * Generates bigrams from the given list of tokens.
+     *
+     * @param tokens the list of tokens from which bigrams need to be generated.
+     * @return a list of bigrams derived from the input list of tokens.
+     */
+    fun generateBigrams(tokens: List<String>): List<Pair<String, String>> {
+        return tokens.zipWithNext()
     }
 
-    override fun evaluateModel(data: DataFrame) {
-        TODO("Not yet implemented")
-    }
 
-    override fun saveModel() {
-        TODO("Not yet implemented")
-    }
-
-    override fun loadModel() {
-        TODO("Not yet implemented")
-    }
 }
