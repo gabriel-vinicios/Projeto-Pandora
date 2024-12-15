@@ -3,18 +3,31 @@ import org.jetbrains.kotlinx.dataframe.*
 import org.jetbrains.kotlinx.dataframe.api.*
 import org.jetbrains.kotlinx.dataframe.io.*
 
-class pipelineController : PipelineInterface {
-    override fun loadAndProcessData(filePath: String) {
 
+class pipelineController : PipelineInterface {
+    override fun readData(): DataFrame {
+        val data = DataFrame.readCSV("src/main/resources/data.csv")
+        return data
     }
 
-    /**
-     * Tokenizes the given text into a list of string tokens.
-     *
-     * @param text the input string that needs to be tokenized.
-     * @return a list of non-empty, trimmed string tokens derived from the input text.
-     */
-    override fun tokenize(text: String): List<String> {
-        return text.split(text).map { it.trim() }.filter { it.isNotEmpty() }
+    override fun preprocessData(data: DataFrame): DataFrame {
+        val preprocessedData = data
+        return preprocessedData
+    }
+
+    override fun trainModel(data: DataFrame) {
+        TODO("Not yet implemented")
+    }
+
+    override fun evaluateModel(data: DataFrame) {
+        TODO("Not yet implemented")
+    }
+
+    override fun saveModel() {
+        TODO("Not yet implemented")
+    }
+
+    override fun loadModel() {
+        TODO("Not yet implemented")
     }
 }

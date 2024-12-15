@@ -7,25 +7,32 @@ import org.jetbrains.kotlinx.dl.api.core.metric.Metrics
 import org.jetbrains.kotlinx.dl.api.core.loss.Losses
 import org.jetbrains.kotlinx.dl.api.core.optimizer.Adam
 
-class modelController : modelInterface {
-
+class modelController : llmModelInterface{
     override fun buildModel(): Sequential {
-        return Sequential.of(
-            Dense(512, Activations.Relu),
+        val model = Sequential.of(
             Dense(256, Activations.Relu),
-            Dense(128, Activations.Sigmoid),
-            Dense(64, Activations.Sigmoid),
-            Dense(1, Activations.Softmax) // Para classificação
-        ).apply {
-            compile(
-                optimizer = Adam(learningRate = 0.001f),
-                loss = Losses.SOFT_MAX_CROSS_ENTROPY_WITH_LOGITS,
-                metric = Metrics.ACCURACY
-            )
-        }
+            Dense(128, Activations.Relu),
+            Dense(64, Activations.Relu),
+            Dense(32, Activations.Relu),
+            Dense(1, Activations.Linear)
+        )
+        model.compile(optimizer = Adam(), loss = Losses.MAE, metric = Metrics.MAE)
+        return model
     }
 
     override fun trainModel() {
-        TODO()
+        TODO("Not yet implemented")
+    }
+
+    override fun evaluateModel() {
+        TODO("Not yet implemented")
+    }
+
+    override fun saveModel() {
+        TODO("Not yet implemented")
+    }
+
+    override fun loadModel() {
+        TODO("Not yet implemented")
     }
 }

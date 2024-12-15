@@ -2,6 +2,10 @@ package bigramModel.pipeline
 
 
 interface PipelineInterface {
-    fun loadAndProcessData(filePath: String)
-    fun tokenize(text: String): List<String>
+    fun readData(): Any
+    fun preprocessData(data: Any): Any
+    fun trainModel(data: Any)
+    fun evaluateModel(data: Any)
+    fun saveModel()
+    fun loadModel()
 }
